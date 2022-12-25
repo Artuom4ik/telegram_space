@@ -23,27 +23,32 @@ def fetch_spacex_launch(id_launch):
         save_image(link, path)
 
 
-def extensions(links):
-    parse = urlparse(links)
-    split = os.path.splitext(parse.path)
-    return split[1]
+def get_extensions(link):
+    path_image = urlparse(link).path
+    extensions_image = os.path.splitext(path_image)[1]
+    return extensions_image
 
 
-def nasa(api_nasa):
-    url = f"https://api.nasa.gov/planetary/apod?api_key={api_nasa}&count=30"
-    response = requests.get(url)
-    links = response.json()
-    lst = []
-    for link_1 in links:
-        lst.append(link_1["hdurl"])
-    for number, link in enumerate(lst):
-        path = f"images/nasa_apod_{number}.jpeg"
-        save_image(link, path)
+def fetch_nasa(nasa_token):
+    params = {
+        "api_key": nasa_token,
+        "count": 30
+    }
+    url = f"https://api.nasa.gov/planetary/apod"
+    response = requests.get(url, params=params)
+    response.raise_for_status()
+    images_response = response.json()
+    for number, image in enumerate(images_response):
+        link_image = image["url"]
+        extension = get_extensions(link_image)
+        if image["media_type"] == "image":
+            path = f"images/nasa_apod_{number}{extension}"
+            save_image(link_image, path)
 
 
 load_dotenv()
-api_nasa = os.getenv('API_NASA')
+nasa_token = os.getenv('API_NASA')
 os.makedirs("images", exist_ok=True)
 id_launch = "5eb87d46ffd86e000604b388"
 fetch_spacex_launch(id_launch)
-nasa(api_nasa)
+fetch_nasa(nasa_token)
