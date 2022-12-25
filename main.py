@@ -34,7 +34,7 @@ def fetch_nasa(nasa_token):
         "api_key": nasa_token,
         "count": 30
     }
-    url = f"https://api.nasa.gov/planetary/apod"
+    url = "https://api.nasa.gov/planetary/apod"
     response = requests.get(url, params=params)
     response.raise_for_status()
     images_response = response.json()
@@ -46,9 +46,29 @@ def fetch_nasa(nasa_token):
             save_image(link_image, path)
 
 
+def fetch_epic_image(nasa_token):
+    params = {
+        "api_key": nasa_token,
+    }
+    url = "https://api.nasa.gov/EPIC/api/natural/images"
+    response = requests.get(url, params=params)
+    response.raise_for_status()
+    images_response = response.json()
+    date_time = images_response[0]["date"]
+    name_image = images_response[0]["image"]
+    date = date_time.split()[0]
+    year, month, day = date.split("-")
+    url_image = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{name_image}.png"
+    response_image = requests.get(url_image, params=params)
+    response_image.raise_for_status()
+    print(response_image.url)
+
+
+
 load_dotenv()
 nasa_token = os.getenv('API_NASA')
 os.makedirs("images", exist_ok=True)
 id_launch = "5eb87d46ffd86e000604b388"
-fetch_spacex_launch(id_launch)
-fetch_nasa(nasa_token)
+# fetch_spacex_launch(id_launch)
+# fetch_nasa(nasa_token)
+fetch_epic_image(nasa_token)
