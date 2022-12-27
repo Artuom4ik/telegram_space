@@ -1,6 +1,7 @@
 import os
 import requests
 import os.path
+import datetime
 
 from pprint import pprint
 from dotenv import load_dotenv
@@ -54,14 +55,14 @@ def fetch_epic_image(nasa_token):
     response = requests.get(url, params=params)
     response.raise_for_status()
     images_response = response.json()
-    date_time = images_response[0]["date"]
-    name_image = images_response[0]["image"]
-    date = date_time.split()[0]
-    year, month, day = date.split("-")
-    url_image = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{name_image}.png"
-    response_image = requests.get(url_image, params=params)
-    response_image.raise_for_status()
-    print(response_image.url)
+    for number, image in enumerate(images_response):
+        now = datetime.datetime.fromisoformat(image["date"])
+        name_image = image["image"]
+        url_image = f"https://api.nasa.gov/EPIC/archive/natural/{now.year}/{now.month}/{now.day}/png/{name_image}.png"
+        response_image = requests.get(url_image, params=params)
+        response_image.raise_for_status()
+        path = f"images/epic_image_{number}.png"
+        save_image(response_image.url, path)
 
 
 
