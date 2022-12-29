@@ -1,9 +1,10 @@
 import os
 import argparse
-from save_image import save_image
 
 import requests
 from dotenv import load_dotenv
+
+from save_image import save_image
 
 
 def fetch_spacex_launch(id_launch):
@@ -17,7 +18,9 @@ def fetch_spacex_launch(id_launch):
 
 def get_id():
     parser = argparse.ArgumentParser(
-        description="Скачивает фотографии SpaceX запуска ракет, по указанному id запуска."
+        description="""
+        Скачивает фотографии SpaceX запуска ракет, по указанному id запуска.
+        """
     )
     load_dotenv()
     id_launch = os.getenv("ID_LAUNCH")
@@ -29,4 +32,3 @@ def get_id():
 if __name__ == "__main__":
     id_launch = get_id()
     fetch_spacex_launch(id_launch)
-   
