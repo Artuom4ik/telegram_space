@@ -1,3 +1,12 @@
+import os
+
+import requests
+from dotenv import load_dotenv
+
+from save_image import save_image
+from get_extensions import get_extensions
+
+
 def fetch_nasa(nasa_token):
     params = {
         "api_key": nasa_token,
@@ -13,3 +22,9 @@ def fetch_nasa(nasa_token):
         if image["media_type"] == "image":
             path = f"images/nasa_apod_{number}{extension}"
             save_image(link_image, path)
+
+
+if __name__ == "__main__":
+    load_dotenv()
+    nasa_token = os.getenv("API_NASA")
+    fetch_nasa(nasa_token)
