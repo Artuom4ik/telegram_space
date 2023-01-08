@@ -23,7 +23,7 @@ def fetch_epic_image(nasa_token):
         """
         response_image = requests.get(url_image, params=params)
         response_image.raise_for_status()
-        path = f"images/epic_image_{number}.png"
+        path = os.path.join("images", f"epic_image_{number}.png")
         save_image(response_image.url, path)
 
 

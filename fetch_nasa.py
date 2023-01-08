@@ -20,7 +20,7 @@ def fetch_nasa(nasa_token):
         link_image = image["url"]
         extension = get_extensions(link_image)
         if image["media_type"] == "image":
-            path = f"images/nasa_apod_{number}{extension}"
+            path = os.path.join("images", f"nasa_apod_{number}{extension}")
             save_image(link_image, path)
 
 
