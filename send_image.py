@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 
 
-def send_image(name_image, chat_id):
+def send_image(name_image, chat_id, bot):
     with open(f"images/{name_image}", "rb") as image:
         bot.send_document(chat_id=chat_id, document=image)
 
