@@ -29,7 +29,6 @@ def get_time_sleep():
         Отправляет фотографии по заданному вермени.
         """
     )
-    load_dotenv()
     time_sleep = os.getenv("TIME_SLEEP")
     parser.add_argument("time_sleep", default=time_sleep, type=str, nargs="?")
     args = parser.parse_args()
