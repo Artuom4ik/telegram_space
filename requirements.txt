@@ -3,3 +3,4 @@ python-telegram-bot==13.0
 requests==2.28.1
 telegram==0.0.1
 urllib3==1.26.12
+pathlib==1.0.1
