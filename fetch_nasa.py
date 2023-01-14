@@ -2,9 +2,10 @@ import os
 
 import requests
 from dotenv import load_dotenv
+from pathlib import Path
 
-from save_image import save_image
-from get_extensions import get_extensions
+from save_image import save_image, get_extensions
+
 
 
 def fetch_nasa(nasa_token):
@@ -12,7 +13,7 @@ def fetch_nasa(nasa_token):
         "api_key": nasa_token,
         "count": 30
     }
-    url = "https://api.nasa.gov/planetary/apod"
+    url = "https://api.nasa.gov/planetary/apod"    
     response = requests.get(url, params=params)
     response.raise_for_status()
     images_response = response.json()
