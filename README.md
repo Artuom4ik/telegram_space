@@ -31,7 +31,7 @@ ___
 * Как скачать фотографии SpaceX:
     * В консоли пишем команду:
     ```
-    python fetch_spacex_launch.py (id_launch)
+    python fetch_spacex_launch.py id_launch
     ```
     * id_launch - это ваш `ID` запуска SpaceX :rocket:.
     * По умолчанию `id_launch` уже записан.
