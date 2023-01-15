@@ -6,7 +6,8 @@ import argparse
 import telegram
 from dotenv import load_dotenv
 
-from send_image import send_image, random_image 
+from send_image import send_image, random_image
+from save_image import NAME_FOLDER 
 
 
 def telegram_bot(chat_id, api_bot):
