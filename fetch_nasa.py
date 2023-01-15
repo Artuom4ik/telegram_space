@@ -2,7 +2,6 @@ import os
 
 import requests
 from dotenv import load_dotenv
-from pathlib import Path
 
 from save_image import save_image, get_extensions, NAME_FOLDER
 from save_image import create_folder
