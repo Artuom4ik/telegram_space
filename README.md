@@ -8,7 +8,7 @@ ___
 ___
 >### Для запуска программы требуется:
  * скачать [Python](https://www.python.org/) версии 3.1 или выше.
- * операционная система linux, windows 7 или выше.
+ * операционная система macOS, linux, windows 7 или выше.
  * установить все нужные библиотеки Python командой:
 ```
 pip install -r requirements.txt
