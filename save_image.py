@@ -1,8 +1,16 @@
 import os.path
+import os
 
 import requests
 
 from urllib.parse import urlparse
+
+
+NAME_FOLDER = "images"
+
+
+def create_folder(NAME_FOLDER):
+    os.makedirs(NAME_FOLDER, exist_ok=True)
 
 
 def save_image(link, path):
@@ -16,3 +24,7 @@ def get_extensions(link):
     path_image = urlparse(link).path
     extensions_image = os.path.splitext(path_image)[1]
     return extensions_image
+
+
+if __name__ == "__main__":
+    create_folder(NAME_FOLDER)
