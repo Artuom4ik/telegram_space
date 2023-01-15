@@ -24,7 +24,3 @@ def get_extensions(link):
     path_image = urlparse(link).path
     extensions_image = os.path.splitext(path_image)[1]
     return extensions_image
-
-
-if __name__ == "__main__":
-    create_folder(NAME_FOLDER)
