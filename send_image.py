@@ -15,7 +15,7 @@ def send_image(name_image, chat_id, bot):
 
 def random_image(image_name):
     if image_name:
-        return image_name    
+        return image_name
     images = os.listdir(NAME_FOLDER)
     return random.choice(images)
 
@@ -38,4 +38,3 @@ if __name__ == "__main__":
     bot = telegram.Bot(token=api_bot)
     name_image = random_image(get_name_file())
     send_image(name_image, chat_id, bot)
-   
