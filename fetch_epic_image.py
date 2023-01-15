@@ -20,7 +20,9 @@ def fetch_epic_image(nasa_token, count):
         date = datetime.datetime.fromisoformat(image["date"])
         image_date = date.strftime("%Y/%m/%d")
         name_image = image["image"]
-        url_image = f"https://api.nasa.gov/EPIC/archive/natural/{image_date}/png/{name_image}.png"
+        url_image = f"""
+        https://api.nasa.gov/EPIC/archive/natural/{image_date}/png/{name_image}.png
+        """
         response_image = requests.get(url_image, params=params)
         response_image.raise_for_status()
         path = os.path.join(NAME_FOLDER, f"epic_image_{number}.png")
