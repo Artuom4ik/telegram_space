@@ -33,8 +33,8 @@ def get_name_file():
 
 if __name__ == "__main__":
     load_dotenv()
-    api_bot = os.getenv("API_BOT")
-    chat_id = os.getenv("CHAT_ID")
+    api_bot = os.environ["API_BOT"]
+    chat_id = os.environ["CHAT_ID"]
     bot = telegram.Bot(token=api_bot)
     name_image = random_image(get_name_file())
     send_image(name_image, chat_id, bot)
