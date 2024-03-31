@@ -2,6 +2,7 @@
 ![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 ___
 #### Это telegram bot который оправляет фотографии космоса.
@@ -48,5 +49,25 @@ ___
     ```
     * `time_sleep` - время отправки между фотографиями. По умолчанию время стоит 4 часа, но вы можете поставить и своё время.`(время выстовляется в секндах)`.
 ___
+>### Как работать с Dockerfile:
+
+* Для того чтобы запустить, `Dockerfile` на своем компьютере, вам потребуется установить [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+* Далее запустите программу `Docker Dosktop`.
+* После запуска `Docker Desktop`, в консоле напишите команду:
+```
+docker build -t telegram_space .
+``` 
+* `telegram_space` - название вашего образа
+* `.` - путь до `Dockerfile`
+* Далее в вашем `Docker Desktop` добавиться образ
+![docker_image](picture/docker_image.png)
+* После, вам требуется запустить этот образ. В консоле напишите команду:
+```
+docker run telegram_space
+```
+* `telegram_space` - название вашего образа который вы создавали ранее.
+* После образ соберется в контейнер и бот будет запущен.
+![docker_container](picture/docker_container.png)
+
 >### Цель проекта:
 * Код написан в образовательных целях 
